@@ -107,7 +107,7 @@ require_contains skills/context-traceability/SKILL.md "manual QA status"
 require_contains skills/traceability-review/SKILL.md "manual-test"
 require_contains skills/subagent-driven-development/SKILL.md "manual test artifact"
 require_contains skills/subagent-driven-development/implementer-prompt.md "manual test artifact"
-require_contains skills/subagent-driven-development/spec-reviewer-prompt.md "manual test"
+require_contains skills/subagent-driven-development/task-reviewer-prompt.md "manual test"
 require_contains skills/executing-plans/SKILL.md "manual test artifact"
 require_contains skills/systematic-debugging/SKILL.md "manual regression"
 require_contains skills/verification-before-completion/SKILL.md "manual QA"
@@ -132,7 +132,7 @@ require_contains commands/update-spec.md "manual test artifact"
 require_file docs/superpowers/manual-tests/2026-05-07-manual-test-artifact-workflow-manual-tests.md
 require_file tests/skill-triggering/prompts/traceability-review-manual-tests.txt
 require_file tests/explicit-skill-requests/prompts/context-traceability-manual-tests.txt
-require_contains tests/skill-triggering/run-all.sh "traceability-review-manual-tests.txt"
+require_file tests/skill-triggering/feature-workflow-structural.sh
 require_contains tests/explicit-skill-requests/run-all.sh "context-traceability-manual-tests.txt"
 
 old_memory_skill="building-"project"-memory"

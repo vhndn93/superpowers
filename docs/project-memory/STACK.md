@@ -3,7 +3,7 @@
 ## Observed
 
 - Superpowers is primarily a Markdown skill library with small shell/JavaScript support scripts.
-- `package.json` declares an npm package named `superpowers`, version `5.0.7`, with `"type": "module"` and no runtime dependencies.
+- `package.json` declares an npm package named `superpowers`, version `6.1.1`, with `"type": "module"` and no runtime dependencies.
 - Skills live as `skills/<skill-name>/SKILL.md`.
 - Shell scripts power hooks, tests, release/version helpers, and Codex plugin sync.
 - The browser brainstorming companion uses Node scripts under `skills/brainstorming/scripts/`.
