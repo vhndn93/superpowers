@@ -1,0 +1,1 @@
+I have a spec and plan for a feature, but this is a new conversation. Before implementing, check related specs, project memory, edge cases, and build the context that a worker agent needs.

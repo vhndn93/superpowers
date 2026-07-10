@@ -1,0 +1,1 @@
+This is an existing codebase and its architecture, conventions, testing, integrations, and concern docs are missing or stale. Inspect the relevant codebase areas and create durable foundational memory docs before feature planning.

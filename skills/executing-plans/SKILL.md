@@ -16,10 +16,12 @@ Load plan, review critically, execute all tasks, report when complete.
 ## The Process
 
 ### Step 1: Load and Review Plan
-1. Read plan file
-2. Review critically - identify any questions or concerns about the plan
-3. If concerns: Raise them with your human partner before starting
-4. If no concerns: Create TodoWrite and proceed
+1. Read plan file.
+2. Read the referenced spec, linked manual test artifact when present, related specs, project memory, and the plan's context packet.
+3. If the plan lacks a context packet for existing-codebase work, stop and ask the human partner to review the exact plan path or regenerate the plan.
+4. Review critically - identify any questions or concerns about the plan.
+5. If concerns: Raise them with your human partner before starting.
+6. If no concerns: Create TodoWrite and proceed.
 
 ### Step 2: Execute Tasks
 

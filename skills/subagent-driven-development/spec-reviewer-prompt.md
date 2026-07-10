@@ -14,6 +14,12 @@ Task tool (general-purpose):
 
     [FULL TEXT of task requirements]
 
+    ## Traceability Inputs
+
+    [Paste active spec path, plan path, context packet, linked manual test artifact when present, related specs, project-memory files, feature context, acceptance criteria, edge cases, and manual test expectations.]
+
+    Verify the implementation against the requested task, active spec, feature context, manual test expectations, and related artifacts. If the task conflicts with the spec, feature context, or manual test artifact, report the conflict instead of choosing silently.
+
     ## What Implementer Claims They Built
 
     [From implementer's report]

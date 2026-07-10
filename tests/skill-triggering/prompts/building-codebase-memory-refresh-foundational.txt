@@ -1,0 +1,1 @@
+This existing codebase has stale architecture and testing docs. Inspect the relevant source areas and refresh the foundational codebase memory before planning.

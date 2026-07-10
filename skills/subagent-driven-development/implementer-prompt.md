@@ -16,6 +16,12 @@ Task tool (general-purpose):
 
     [Scene-setting: where this fits, dependencies, architectural context]
 
+    ## Context Packet
+
+    [Paste the active context packet here. Include spec path, plan path, linked manual test artifact when present, project-memory files, feature context, acceptance criteria, edge cases, manual test expectations, relevant code paths, verification commands, human-run setup requirements, known risks, and untrusted context.]
+
+    Before editing, read the named spec, plan, manual test artifact when present, and memory files. If any required artifact is missing or contradictory, report NEEDS_CONTEXT instead of guessing.
+
     ## Before You Begin
 
     If you have questions about:
@@ -79,6 +85,7 @@ Task tool (general-purpose):
     - Did I fully implement everything in the spec?
     - Did I miss any requirements?
     - Are there edge cases I didn't handle?
+    - Does the implementation still match manual test expectations for human-verifiable behavior?
 
     **Quality:**
     - Is this my best work?
@@ -94,6 +101,7 @@ Task tool (general-purpose):
     - Do tests actually verify behavior (not just mock behavior)?
     - Did I follow TDD if required?
     - Are tests comprehensive?
+    - Did I leave manual QA status untouched unless the human partner reported results?
 
     If you find issues during self-review, fix them now before reporting.
 

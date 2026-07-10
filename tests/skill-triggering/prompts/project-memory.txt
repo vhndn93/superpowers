@@ -1,0 +1,1 @@
+This is an existing codebase. Start by summarizing durable project context, related specs, active workflow memory, missing or untrusted memory, and the next command. If foundational codebase docs are stale, say that they should be delegated to the codebase memory builder.

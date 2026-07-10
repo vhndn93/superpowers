@@ -1,0 +1,1 @@
+Record this learning: for this architecture, subagents need explicit feature context before implementation. Keep it as workflow memory and do not refresh architecture docs.

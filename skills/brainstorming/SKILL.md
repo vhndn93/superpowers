@@ -22,14 +22,16 @@ Every project goes through this process. A todo list, a single-function utility,
 You MUST create a task for each of these items and complete them in order:
 
 1. **Explore project context** — check files, docs, recent commits
-2. **Offer visual companion** (if topic will involve visual questions) — this is its own message, not combined with a clarifying question. See the Visual Companion section below.
-3. **Ask clarifying questions** — one at a time, understand purpose/constraints/success criteria
-4. **Propose 2-3 approaches** — with trade-offs and your recommendation
-5. **Present design** — in sections scaled to their complexity, get user approval after each section
-6. **Write design doc** — save to `docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md` and commit
-7. **Spec self-review** — quick inline check for placeholders, contradictions, ambiguity, scope (see below)
-8. **User reviews written spec** — ask user to review the spec file before proceeding
-9. **Transition to implementation** — invoke writing-plans skill to create implementation plan
+2. **Establish project memory for existing codebases** — invoke `project-memory`; if foundational architecture/convention/testing/concern docs are missing or stale, it delegates to `building-codebase-memory`
+3. **Run brainstorm-preflight** — for existing codebases, invoke `context-traceability` in `brainstorm-preflight` mode before detailed questions
+4. **Offer visual companion** (if topic will involve visual questions) — this is its own message, not combined with a clarifying question. See the Visual Companion section below.
+5. **Ask clarifying questions** — one at a time, understand purpose/constraints/success criteria
+6. **Propose 2-3 approaches** — with trade-offs and your recommendation, including assumptions, unknowns, related specs, and likely edge cases
+7. **Present design** — in sections scaled to their complexity, get user approval after each section
+8. **Write design doc and manual test artifact** — save the spec under `docs/superpowers/specs/`; when behavior is user-visible or manually verifiable, create and link a manual test artifact under `docs/superpowers/manual-tests/`
+9. **Spec self-review** — invoke `traceability-review` in `spec-review` mode, then fix issues in the spec you just wrote
+10. **User reviews written spec** — ask user to review the spec file before proceeding
+11. **Transition to implementation** — invoke writing-plans skill to create implementation plan
 
 ## Process Flow
 
@@ -70,6 +72,9 @@ digraph brainstorming {
 **Understanding the idea:**
 
 - Check out the current project state first (files, docs, recent commits)
+- In existing codebases, prefer durable project memory over repeated archaeology. Invoke `project-memory` before design work continues; it delegates to `building-codebase-memory` when foundational codebase docs are missing, stale, incomplete, or inconsistent with code.
+- If project memory exists, read the relevant artifacts before asking detailed feature questions. At minimum, pull in architecture, structure, conventions, testing, concerns, feature context, and spec index docs for the subsystem you're changing.
+- Use `context-traceability` in `brainstorm-preflight` mode to discover related specs, plans, code paths, feature context, assumptions, unknowns, and likely edge cases.
 - Before asking detailed questions, assess scope: if the request describes multiple independent subsystems (e.g., "build a platform with chat, file storage, billing, and analytics"), flag this immediately. Don't spend questions refining details of a project that needs to be decomposed first.
 - If the project is too large for a single spec, help the user decompose into sub-projects: what are the independent pieces, how do they relate, what order should they be built? Then brainstorm the first sub-project through the normal design flow. Each sub-project gets its own spec → plan → implementation cycle.
 - For appropriately-scoped projects, ask questions one at a time to refine the idea
@@ -110,6 +115,13 @@ digraph brainstorming {
 
 - Write the validated design (spec) to `docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md`
   - (User preferences for spec location override this default)
+- If the feature has user-visible or manually verifiable behavior, create `docs/superpowers/manual-tests/YYYY-MM-DD-<topic>-manual-tests.md` and link it from the spec.
+- Manual test cases are for human QA after implementation. They do not replace automated tests or verification commands.
+- Use these sections: `Happy Path`, `Negative / Error Path`, `Edge Case / Risk`, and `Regression / Affected Existing Features`.
+- Default to 8-12 cases for a normal feature. Use 4-6 for small low-risk changes, 12-18 for large/high-risk changes, 3-6 for bug fixes, and 0-3 for internal refactors with limited manual-verifiable behavior.
+- Include an `Affected Existing Features` map with feature name, touched code paths, why the feature is affected, and manual coverage case IDs.
+- Start each manual case with `Status: Not run`; do not mark cases passed, failed, or blocked unless the human partner reports results.
+- If manual testing is not applicable, include `Manual test artifact: Not applicable` in the spec with a short reason.
 - Use elements-of-style:writing-clearly-and-concisely skill if available
 - Commit the design document to git
 
@@ -120,6 +132,7 @@ After writing the spec document, look at it with fresh eyes:
 2. **Internal consistency:** Do any sections contradict each other? Does the architecture match the feature descriptions?
 3. **Scope check:** Is this focused enough for a single implementation plan, or does it need decomposition?
 4. **Ambiguity check:** Could any requirement be interpreted two different ways? If so, pick one and make it explicit.
+5. **Manual QA check:** If the feature is user-visible or manually verifiable, does the spec link to a manual test artifact with the right case budget, required sections, affected existing features, touched code paths, and cases mapped to acceptance criteria?
 
 Fix any issues inline. No need to re-review — just fix and move on.
 

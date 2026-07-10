@@ -1,0 +1,1 @@
+Please use project-memory to audit docs/project-memory, summarize workflow context, identify missing or untrusted memory, and recommend whether building-codebase-memory is needed before brainstorming.

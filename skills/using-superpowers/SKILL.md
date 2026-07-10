@@ -104,6 +104,30 @@ When multiple skills could apply, use this order:
 "Let's build X" → brainstorming first, then implementation skills.
 "Fix this bug" → debugging first, then domain-specific skills.
 
+## Traceable Workflow Routing
+
+When work touches an existing codebase, project memory, specs, plans, implementation, debugging, review, or finishing, consider these support skills before acting:
+
+- Use `project-memory` when starting in an existing codebase, summarizing durable context, recording learnings, routing to specs/plans, or reviewing `docs/project-memory/`.
+- Use `building-codebase-memory` when foundational architecture, structure, conventions, testing, integrations, or concern docs are missing, stale, incomplete, or inconsistent with code.
+- Use `context-traceability` when a task needs related specs/plans/code, command state, context packets, spec updates, or subagent context injection.
+- Use `traceability-review` when reviewing a spec, plan, implementation, bug fix, memory pack, or full active workflow chain.
+
+Command-like prompts map to skills:
+
+| Prompt shape | Required skill |
+| --- | --- |
+| `/context-start` or `Context start:` | `project-memory`, with `building-codebase-memory` when foundational memory is missing or stale |
+| `/brainstorm-feature` or `Brainstorm feature:` | `brainstorming` plus `context-traceability` |
+| `/write-spec` or `Write spec` | `brainstorming` plus `traceability-review` |
+| `/plan-spec` or `Plan spec:` | `writing-plans` plus `context-traceability` |
+| `/review-spec`, `/review-plan`, `/review-implementation`, `/review-bug-fix`, `/review-traceability` | `traceability-review` |
+| `/implement-plan` or `Implement plan:` | `subagent-driven-development` or `executing-plans` |
+| `/debug-with-memory` or `Debug with memory:` | `systematic-debugging` plus `context-traceability` |
+| `/update-spec` or `Update spec:` | `context-traceability` |
+| `/record-learning` or `Record learning:` | `project-memory` |
+| `/finish-traceable` or `Finish traceable work` | `verification-before-completion` plus `traceability-review` |
+
 ## Skill Types
 
 **Rigid** (TDD, debugging): Follow exactly. Don't adapt away discipline.

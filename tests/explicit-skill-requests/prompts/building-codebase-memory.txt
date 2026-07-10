@@ -1,0 +1,1 @@
+Please use building-codebase-memory to refresh the foundational architecture, structure, conventions, testing, integrations, and concerns docs for this existing codebase.

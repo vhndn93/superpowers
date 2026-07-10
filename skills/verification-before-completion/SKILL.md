@@ -37,6 +37,19 @@ BEFORE claiming any status or expressing satisfaction:
 Skip any step = lying, not verifying
 ```
 
+## Traceability Evidence
+
+For traceable feature, plan, implementation, or bug-fix work, completion requires evidence beyond test output:
+
+This traceability evidence must be checked before completion claims.
+
+1. Identify the active spec and plan when they exist.
+2. Verify the current diff against plan tasks and spec acceptance criteria.
+3. Check whether feature context, project memory, `SPEC_INDEX.md`, or `BUG_PATTERNS.md` need updates.
+4. If a manual test artifact is linked, report its path and manual QA status separately from automated verification. Do not mark manual cases passed, failed, or blocked without human-reported evidence.
+5. Run or request `traceability-review` when the work touches specs, plans, behavior, bug fixes, or memory.
+6. Only then make completion claims.
+
 ## Common Failures
 
 | Claim | Requires | Not Sufficient |

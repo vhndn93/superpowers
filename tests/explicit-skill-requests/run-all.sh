@@ -14,49 +14,36 @@ PASSED=0
 FAILED=0
 RESULTS=""
 
+run_case() {
+    local skill="$1"
+    local prompt_name="$2"
+    local label="$3"
+
+    echo ">>> Test $((PASSED + FAILED + 1)): $label"
+    if "$SCRIPT_DIR/run-test.sh" "$skill" "$PROMPTS_DIR/$prompt_name"; then
+        PASSED=$((PASSED + 1))
+        RESULTS="$RESULTS\nPASS: $label"
+    else
+        FAILED=$((FAILED + 1))
+        RESULTS="$RESULTS\nFAIL: $label"
+    fi
+    echo ""
+}
+
 # Test: subagent-driven-development, please
-echo ">>> Test 1: subagent-driven-development-please"
-if "$SCRIPT_DIR/run-test.sh" "subagent-driven-development" "$PROMPTS_DIR/subagent-driven-development-please.txt"; then
-    PASSED=$((PASSED + 1))
-    RESULTS="$RESULTS\nPASS: subagent-driven-development-please"
-else
-    FAILED=$((FAILED + 1))
-    RESULTS="$RESULTS\nFAIL: subagent-driven-development-please"
-fi
-echo ""
+run_case "subagent-driven-development" "subagent-driven-development-please.txt" "subagent-driven-development-please"
 
 # Test: use systematic-debugging
-echo ">>> Test 2: use-systematic-debugging"
-if "$SCRIPT_DIR/run-test.sh" "systematic-debugging" "$PROMPTS_DIR/use-systematic-debugging.txt"; then
-    PASSED=$((PASSED + 1))
-    RESULTS="$RESULTS\nPASS: use-systematic-debugging"
-else
-    FAILED=$((FAILED + 1))
-    RESULTS="$RESULTS\nFAIL: use-systematic-debugging"
-fi
-echo ""
+run_case "systematic-debugging" "use-systematic-debugging.txt" "use-systematic-debugging"
 
 # Test: please use brainstorming
-echo ">>> Test 3: please-use-brainstorming"
-if "$SCRIPT_DIR/run-test.sh" "brainstorming" "$PROMPTS_DIR/please-use-brainstorming.txt"; then
-    PASSED=$((PASSED + 1))
-    RESULTS="$RESULTS\nPASS: please-use-brainstorming"
-else
-    FAILED=$((FAILED + 1))
-    RESULTS="$RESULTS\nFAIL: please-use-brainstorming"
-fi
-echo ""
+run_case "brainstorming" "please-use-brainstorming.txt" "please-use-brainstorming"
 
 # Test: mid-conversation execute plan
-echo ">>> Test 4: mid-conversation-execute-plan"
-if "$SCRIPT_DIR/run-test.sh" "subagent-driven-development" "$PROMPTS_DIR/mid-conversation-execute-plan.txt"; then
-    PASSED=$((PASSED + 1))
-    RESULTS="$RESULTS\nPASS: mid-conversation-execute-plan"
-else
-    FAILED=$((FAILED + 1))
-    RESULTS="$RESULTS\nFAIL: mid-conversation-execute-plan"
-fi
-echo ""
+run_case "subagent-driven-development" "mid-conversation-execute-plan.txt" "mid-conversation-execute-plan"
+
+# Test: context-traceability manual test context packet
+run_case "context-traceability" "context-traceability-manual-tests.txt" "context-traceability-manual-tests"
 
 echo "=== Summary ==="
 echo -e "$RESULTS"

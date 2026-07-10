@@ -1,0 +1,1 @@
+Please use context-traceability to prepare an implementation context packet for an approved plan. Include the active spec path, plan path, project memory, acceptance criteria, verification commands, affected existing features, touched code paths, and the linked manual test artifact with any human-run setup requirements.

@@ -22,6 +22,42 @@ Assume they are a skilled developer, but know almost nothing about our toolset o
 
 If the spec covers multiple independent subsystems, it should have been broken into sub-project specs during brainstorming. If it wasn't, suggest breaking this into separate plans — one per subsystem. Each plan should produce working, testable software on its own.
 
+## Project Memory Prerequisite
+
+In existing codebases, plans must be grounded in durable project memory rather than rediscovering architecture from scratch.
+
+Before writing the plan:
+
+- Read the relevant files from `docs/project-memory/` or the human partner's preferred equivalent.
+- At minimum, read architecture, conventions, testing, concerns, feature context, and spec index docs for the area you're changing.
+- If those docs are missing or stale, stop and invoke `project-memory`; it delegates foundational refreshes to `building-codebase-memory` before planning continues.
+
+Plans must preserve the project's established structure, conventions, and integration boundaries unless the approved spec explicitly changes them.
+
+## Traceability Preflight
+
+Before defining tasks:
+
+1. Invoke `context-traceability` in `planning-preflight` mode.
+2. Read the approved spec, related specs/plans, and linked manual test artifact when present.
+3. Inspect relevant code paths named by the spec, memory, manual test artifact, or preflight.
+4. Refine the manual test artifact with setup, data/account/device prerequisites, plan task mappings, affected existing features, touched code paths, and newly discovered edge or regression cases.
+5. Build a context packet in the plan.
+6. Invoke `traceability-review` in `plan-review` mode after writing the plan.
+
+## Plan Pressure-Test
+
+Before asking the human partner to approve the plan, simulate execution:
+
+1. Can each task be completed from the provided context packet?
+2. Are task dependencies ordered correctly?
+3. Does any task write before required discovery?
+4. Does every acceptance criterion have a verification step?
+5. Are likely edge cases covered by tasks or tests?
+6. Does human-verifiable behavior have manual test coverage, the right case budget, required sections, affected-existing-feature regression coverage, and setup clear enough for the human partner?
+
+Fix review and pressure-test issues in the plan before presenting it.
+
 ## File Structure
 
 Before defining tasks, map out which files will be created or modified and what each one is responsible for. This is where decomposition decisions get locked in.
@@ -57,7 +93,31 @@ This structure informs the task decomposition. Each task should produce self-con
 
 **Tech Stack:** [Key technologies/libraries]
 
+**Project Memory:** [Relevant docs/project-memory/*.md files used for this plan, or "None - greenfield"]
+
+**Manual Test Artifact:** [path to docs/superpowers/manual-tests/... or "Not applicable - <reason>"]
+
 ---
+
+## Implementation Context Packet
+
+**Active spec:** [path]
+
+**Related artifacts:** [paths]
+
+**Feature context:** [terms, invariants, user-facing concepts, and durable business rules]
+
+**Acceptance criteria:** [mapped requirements]
+
+**Edge cases and negative cases:** [covered cases]
+
+**Relevant code paths:** [paths inspected or needing inspection]
+
+**Verification commands:** [commands]
+
+**Manual test artifact:** [path plus cases that require human/device/account/data verification]
+
+**Known risks and open questions:** [specific risks]
 ```
 
 ## Task Structure
@@ -128,6 +188,8 @@ After writing the complete plan, look at the spec with fresh eyes and check the 
 **2. Placeholder scan:** Search your plan for red flags — any of the patterns from the "No Placeholders" section above. Fix them.
 
 **3. Type consistency:** Do the types, method signatures, and property names you used in later tasks match what you defined in earlier tasks? A function called `clearLayers()` in Task 3 but `clearFullLayers()` in Task 7 is a bug.
+
+**4. Manual QA traceability:** If the spec links to a manual test artifact, does the plan link it, refine setup/prerequisites, map cases to plan tasks, identify affected existing features and touched code paths, keep the case count within the right budget, and avoid claiming human-run status?
 
 If you find issues, fix them inline. No need to re-review — just fix and move on. If you find a spec requirement with no task, add the task.
 

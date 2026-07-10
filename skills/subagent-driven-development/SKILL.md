@@ -11,6 +11,8 @@ Execute plan by dispatching fresh subagent per task, with two-stage review after
 
 **Core principle:** Fresh subagent per task + two-stage review (spec then quality) = high quality, fast iteration
 
+**Traceability requirement:** Before dispatching any implementer, spec reviewer, code quality reviewer, debugger, or explorer subagent, build or read the plan's context packet. Include that packet in the subagent prompt with the active spec path, plan path, linked manual test artifact when present, related memory files, feature context, acceptance criteria, edge cases, relevant code paths, verification commands, human-run setup requirements, and missing or untrusted context.
+
 ## When to Use
 
 ```dot
@@ -239,6 +241,7 @@ Done!
 - Proceed with unfixed issues
 - Dispatch multiple implementation subagents in parallel (conflicts)
 - Make subagent read plan file (provide full text instead)
+- Dispatch subagents without a context packet when the plan or active work has one
 - Skip scene-setting context (subagent needs to understand where task fits)
 - Ignore subagent questions (answer before letting them proceed)
 - Accept "close enough" on spec compliance (spec reviewer found issues = not done)

@@ -37,6 +37,17 @@ Stop. Don't proceed to Step 2.
 
 **If tests pass:** Continue to Step 2.
 
+### Step 1.5: Finish Traceable Work
+
+If the branch has an active spec, plan, or traceability context, run the `finish-traceable` hygiene before presenting integration options:
+
+1. Run `traceability-review` in `full` mode.
+2. Report the linked manual test artifact path and manual QA status when present. Do not claim manual tests passed unless the human partner reported results.
+3. Update `SPEC_INDEX.md`.
+4. Update project memory if architecture, conventions, testing, integrations, feature context, or concerns changed.
+5. Update `BUG_PATTERNS.md` if the work fixed a reusable bug pattern.
+6. Summarize specs changed, plans changed, code changed, tests run, manual tests changed, manual tests requiring human execution, and remaining risks.
+
 ### Step 2: Determine Base Branch
 
 ```bash

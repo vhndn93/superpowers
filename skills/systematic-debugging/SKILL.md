@@ -21,6 +21,23 @@ NO FIXES WITHOUT ROOT CAUSE INVESTIGATION FIRST
 
 If you haven't completed Phase 1, you cannot propose fixes.
 
+## Memory And Evidence Preflight
+
+For existing-codebase bugs, invoke `context-traceability` in `debug-preflight` mode before proposing fixes. Read project memory, `FEATURE_CONTEXT.md`, `BUG_PATTERNS.md`, related specs, related plans, and likely code paths.
+
+Preserve an evidence trail:
+
+- Observations
+- Reproduction steps
+- Hypotheses
+- Experiments
+- Root cause
+- Fix
+- Verification
+- Spec or memory updates needed
+
+After the fix, update the relevant spec if behavior changed. If the bug is human-verifiable, add or update a manual regression case in the linked manual test artifact. If the root cause is reusable, record it in `BUG_PATTERNS.md`.
+
 ## When to Use
 
 Use for ANY technical issue:
